@@ -2,10 +2,12 @@ import {EventEmitter} from 'events';
 
 const myEmitter = new EventEmitter();
 
-// Add new Listeners
-myEmitter.on('timeout', (secondsQuantity) => {
+const timeoutListenerFN = (secondsQuantity) => {
     console.log(`Timeout event in ${secondsQuantity} seconds`);
-});
+}
+
+// Add new Listeners
+myEmitter.on('timeout', timeoutListenerFN);
 
 // emitter timeouts
 setTimeout(() => {
@@ -24,3 +26,8 @@ myEmitter.once('singleEvent', () => {
 setInterval(() => {
     myEmitter.emit('singleEvent');
 },500);
+
+// Revome/Off Listener
+setTimeout(() => {
+    myEmitter.off('timeout', timeoutListenerFN);
+}, 1500);
