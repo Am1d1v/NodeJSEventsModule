@@ -13,6 +13,18 @@ myEmitter.on('myEvent', () => {
     console.log('Third Event Listener');
 });
 
+myEmitter.on('newEvent', () => {
+    console.log('New Event');
+});
+
+//Set Msx Listeners for the event
+myEmitter.setMaxListeners(30);
+
 setTimeout(() => {
-    myEmitter.emit('myEvent')
+    console.log(myEmitter.getMaxListeners());
+
+    // Get array of events
+    console.log(myEmitter.eventNames());
+    myEmitter.emit('myEvent');
+    myEmitter.emit('newEvent');
 }, 1500);
