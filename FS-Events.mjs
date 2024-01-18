@@ -1,7 +1,7 @@
-import {EventListener} from 'events';
+import {EventEmitter} from 'events';
 import fs from 'fs';
 
-const fileEmitter = new EventListener();
+const fileEmitter = new EventEmitter();
 
 // Events Listeners
 // Write text data in file
@@ -20,5 +20,5 @@ fileEmitter.on('appendComplete', () => {
 
 
 fs.writeFile('./text.txt', 'Some Data Text', () => {
-    fileEmitter.emit('writeComplite')
+    fileEmitter.emit('writeComplete')
 });
